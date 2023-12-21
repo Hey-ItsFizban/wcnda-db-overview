@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: emedgene_v6_demo
+    volumes:
+      - ./mysql-data:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: emedgene_v6_demo
+    volumes:
+      - ./postgres-data:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
